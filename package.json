@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "google-spreadsheet": "^3.3.0",
+    "googleapis": "^108.0.0",
+    "pdf2json": "^2.1.0"
+  },
+  "type": "module"
+}
