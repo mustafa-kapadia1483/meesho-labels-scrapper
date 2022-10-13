@@ -40,23 +40,37 @@ This helps easily track all the shipped orders for Meesho in one place.
 
 To clone and run this application, you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com)) installed on your computer. From your command line:
 
+Clone this repository
+
 ```bash
-# Clone this repository
-$ git clone https://github.com/mustafa-kapadia1483/meesho-labels-scrapper
+git clone https://github.com/mustafa-kapadia1483/meesho-labels-scrapper
+```
 
-# Install dependencies
-$ npm install
+Install dependencies
 
-# From Google Console Create Service Account and create json key for Google Sheets API, rename json key to secrets.json and place that file in the main directory (outside src folder)
+```bash
+npm install
+```
 
-# Run the app
-$ npm start
+From Google Console Create Service Account and create json key for Google Sheets API, rename json key to secrets.json and place that file in the main directory (outside src folder)
 
-# Build Distributable
-$ npm make
+Run the app
+
+```bash
+npm start
+```
+
+Build Distributable
+
+```bash
+npm make
 ```
 
 ## Contact
 
 - Website [mustafak.dev](https://mustafak.dev)
 - GitHub [@mustafa-kapadia1483](https://github.com/mustafa-kapadia1483)
+
+```
+
+```
