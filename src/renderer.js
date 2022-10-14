@@ -21,11 +21,22 @@ uploadButton.addEventListener("click", async () => {
 
   const inputsRow = document.getElementById("inputs-row");
 
+  const storedSpreadhsheetSheetLink = localStorage.getItem("sheetLink") ?? "";
   const col1 = createCol();
-  col1.append(createInputGroup("Spreadsheet Link", "sheet-link", "text"));
+  col1.append(
+    createInputGroup(
+      "Spreadsheet Link",
+      "sheet-link",
+      "text",
+      storedSpreadhsheetSheetLink
+    )
+  );
 
+  const storedSheetName = localStorage.getItem("sheetName") ?? "";
   const col2 = createCol();
-  col2.append(createInputGroup("Sheet Name", "sheet-name", "text"));
+  col2.append(
+    createInputGroup("Sheet Name", "sheet-name", "text", storedSheetName)
+  );
 
   inputsRow.append(col1, col2);
 
@@ -39,13 +50,16 @@ uploadButton.addEventListener("click", async () => {
     console.log(spreadsheetID);
     const sheetName = sheetNameInput.value;
 
-    if (sheetName.length > 0 && spreadsheetID.length > 0)
-      ipcRenderer.invoke(
-        "updateGoogleSheets",
-        spreadsheetID,
-        sheetName,
-        extractedData
-      );
+    if (sheetName.length <= 0 && spreadsheetID.length <= 0) return;
+    ipcRenderer.invoke(
+      "updateGoogleSheets",
+      spreadsheetID,
+      sheetName,
+      extractedData
+    );
+
+    localStorage.setItem("sheetLink", spreadsheeLinkInput?.value);
+    localStorage.setItem("sheetLink", spreadsheeLinkInput?.value);
   });
 });
 
@@ -91,7 +105,7 @@ function createButton(buttonText, className) {
   return button;
 }
 
-function createInputGroup(labelText, id, type) {
+function createInputGroup(labelText, id, type, value) {
   const div = document.createElement("div");
   div.className = "ms-form-group";
 
@@ -104,6 +118,7 @@ function createInputGroup(labelText, id, type) {
   const input = document.createElement("input");
   input.type = type;
   input.id = id;
+  input.value = value;
 
   div.append(input);
 
