@@ -2,6 +2,8 @@
 
 <h1 align="center">Meesho Label Scrapper</h1>
 
+![image](https://user-images.githubusercontent.com/60058032/195938359-ddf7f8f6-8195-49a2-bfcd-610d804f320c.png)
+
 <!-- TABLE OF CONTENTS -->
 
 ## Table of Contents
@@ -70,7 +72,4 @@ npm make
 
 - Website [mustafak.dev](https://mustafak.dev)
 - GitHub [@mustafa-kapadia1483](https://github.com/mustafa-kapadia1483)
-
-```
-
-```
+- LinkedIn [Mustafa Kapadia](https://www.linkedin.com/in/mustafa-kapadia/)
