@@ -77,6 +77,12 @@ ipcMain.handle("parsePdfData", async (e, pdfFilePath) => {
 ipcMain.handle(
   "updateGoogleSheets",
   async (e, googleSpreadsheetId, sheetName, extractedData) => {
-    updateGoogleSheets(secrets, googleSpreadsheetId, sheetName, extractedData);
+    const result = updateGoogleSheets(
+      secrets,
+      googleSpreadsheetId,
+      sheetName,
+      extractedData
+    );
+    return result;
   }
 );

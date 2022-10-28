@@ -16,14 +16,17 @@ async function parsePdfData(filePath) {
         const { Texts } = page;
 
         const shippingTexts = Texts.filter(({ x }) => x === 22.301);
-        const shipperName = shippingTexts[0].R[0].T.replace("%20", " ");
-        const awbNumber = shippingTexts[1].R[0].T;
+        if (!shippingTexts) {
+          return;
+        }
+        const shipperName = shippingTexts[0]?.R[0].T.replace("%20", " ");
+        const awbNumber = shippingTexts[1]?.R[0].T;
         const trackingLink = getTrackingLink(shipperName, awbNumber);
-        const orderNumber = Texts.filter(({ x }) => x === 23.529)[4].R[0].T;
+        const orderNumber = Texts.filter(({ x }) => x === 23.529)?.[4]?.R[0]?.T;
         const productName = getProductName(Texts)
-          .split("%20")
-          .slice(0, 2)
-          .join(" ");
+          ?.split("%20")
+          ?.slice(0, 2)
+          ?.join(" ");
 
         extractedData.push({
           productName,
@@ -34,7 +37,7 @@ async function parsePdfData(filePath) {
         });
       });
 
-      console.log(extractedData);
+      // console.log(extractedData);
       resolve(extractedData);
     });
   });

@@ -8,7 +8,7 @@ function getFormattedDate(date) {
 
 function getProductName(Texts) {
   const totalTextIndex = Texts.findIndex(({ R }) => R[0].T === "Total");
-  return Texts[totalTextIndex + 1].R[0].T;
+  return Texts?.[totalTextIndex + 1]?.R[0]?.T;
 }
 
 function getTrackingLink(shipperName, awbNumber) {

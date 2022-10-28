@@ -40,7 +40,7 @@ uploadButton.addEventListener("click", async () => {
 
   inputsRow.append(col1, col2);
 
-  uploadDataButton.addEventListener("click", () => {
+  uploadDataButton.addEventListener("click", async () => {
     const spreadsheeLinkInput = document.getElementById("sheet-link");
     const sheetNameInput = document.getElementById("sheet-name");
 
@@ -51,15 +51,24 @@ uploadButton.addEventListener("click", async () => {
     const sheetName = sheetNameInput.value;
 
     if (sheetName.length <= 0 && spreadsheetID.length <= 0) return;
-    ipcRenderer.invoke(
+    const uploadResult = await ipcRenderer.invoke(
       "updateGoogleSheets",
       spreadsheetID,
       sheetName,
       extractedData
     );
 
+    if (!(uploadResult === "success")) {
+      alert(uploadResult);
+      console.log(uploadResult);
+      return;
+    }
+
     localStorage.setItem("sheetLink", spreadsheeLinkInput?.value);
-    localStorage.setItem("sheetLink", spreadsheeLinkInput?.value);
+    localStorage.setItem("sheetName", sheetNameInput?.value);
+
+    confirm(`${extractedData?.length} orders have been uploaded`);
+    [row, uploadDataButton, col1, col2].forEach(el => el.remove());
   });
 });
 
